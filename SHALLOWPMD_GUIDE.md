@@ -55,7 +55,7 @@ torch.nn.Module
 ├── SimpleEmbeddingNet     # 特征提取
 ├── SimpleDescriptor       # 描述符
 ├── SimpleFittingNet       # 拟合网络
-└── DeePMDMinimalModel     # 顶层模型
+└── ShallowPMDModel        # 顶层模型
 ```
 
 **简洁性**：6 个类，直接继承 Module，无抽象
@@ -171,7 +171,7 @@ Step 4: 环境矩阵
 - 原子 i 的能量只由其类型对应的拟合网络计算
 - 允许 H、C、N 等不同元素有不同的相互作用强度
 
-### 5️⃣ DeePMDMinimalModel（顶层模型）
+### 5️⃣ ShallowPMDModel（顶层模型）
 
 **整体架构**：
 ```
@@ -483,6 +483,6 @@ for epoch in range(100):
 ---
 
 **创建日期**: 2026-11-09  
-**版本**: 1.0-minimal  
+**版本**: 1.0-shallow  
 **状态**: ✅ 可运行且有注释的简化版本  
 
