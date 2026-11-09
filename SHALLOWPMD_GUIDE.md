@@ -337,12 +337,12 @@ forces = model.compute_forces(coords, atype, nlist)
 
 ```python
 import torch.optim as optim
-from shallow_pmd import DeePMDLoss
+from shallow_pmd import ShallowPMDLoss
 
 # 初始化
 model = ShallowPMDModel(...)
 optimizer = optim.Adam(model.parameters(), lr=0.001)
-loss_fn = DeePMDLoss()
+loss_fn = ShallowPMDLoss()
 
 # 训练
 for epoch in range(100):
