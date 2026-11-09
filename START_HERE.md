@@ -50,7 +50,7 @@ Forces shape: torch.Size([...])
 # 查看基础用法
 python -c "
 import torch
-from deepmd_minimal import ShallowPMDModel
+from shallow_pmd import ShallowPMDModel
 
 # 创建模型
 model = ShallowPMDModel(rcut=6.0, sel=[32], ntypes=1)
@@ -95,10 +95,10 @@ cat SHALLOWPMD_GUIDE.md
 
 ```bash
 # 查看 SmoothingFunction 类
-grep -A 30 "class SmoothingFunction" deepmd_minimal.py
+grep -A 30 "class SmoothingFunction" shallow_pmd.py
 
 # 查看 EnvironmentMatrix 类
-grep -A 30 "class EnvironmentMatrix" deepmd_minimal.py
+grep -A 30 "class EnvironmentMatrix" shallow_pmd.py
 
 # 查看完整模型
 grep -A 50 "class ShallowPMDModel" shallowpmd.py
@@ -165,7 +165,7 @@ cat VERIFICATION_CHECKLIST.md | grep -A 5 "常见问题"
 │   ├─ ShallowPMDModel.               完整模型
 │   └─ test_model()                   单元测试
 │
-├── 📖 README_MINIMAL.md              ← 快速入门（300+ 行）
+├── 📖 README_SHALLOW.md              ← 快速入门（300+ 行）
 │
 ├── 📖 SHALLOWPMD_GUIDE.md        ← 详细指南（488 行）
 │
@@ -320,7 +320,7 @@ forces = torch.autograd.grad(
 | 资源 | 用途 | 时间 |
 |------|------|------|
 | `quick_check.py` | 检查环境 | 2 分钟 |
-| `README_MINIMAL.md` | 快速入门 | 10 分钟 |
+| `README_SHALLOW.md` | 快速入门 | 10 分钟 |
 | `SHALLOWPMD_GUIDE.md` | 详细学习 | 45 分钟 |
 | `VERIFICATION_CHECKLIST.md` | 完整验证 | 30 分钟 |
 | `shalllowpmd.py` | 精读代码 | 2 小时 |
@@ -366,7 +366,7 @@ vim shalllowpmd.py  # 或 code shalllowpmd.py
 ## 🎓 推荐学习路径
 
 ### 初级（1 小时）
-1. ✅ 阅读 `README_MINIMAL.md`
+1. ✅ 阅读 `README_SHALLOW.md`
 2. ✅ 运行 `quick_check.py`
 3. ✅ 运行 `shalllowpmd.py` 中的示例
 4. ✅ 修改参数，重新运行观察结果
@@ -392,7 +392,7 @@ vim shalllowpmd.py  # 或 code shalllowpmd.py
 ### 如果您是新手
 ```bash
 python quick_check.py
-cat README_MINIMAL.md
+cat README_SHALLOW.md
 python shalllowpmd.py
 ```
 
@@ -417,11 +417,11 @@ cat VERIFICATION_CHECKLIST.md  # 了解测试方法
 
 - [ ] 运行了 `quick_check.py` 并通过了所有检查
 - [ ] 成功运行了 `shalllowpmd.py`
-- [ ] 阅读了 `README_MINIMAL.md`
+- [ ] 阅读了 `README_SHALLOW.md`
 - [ ] 理解了至少一个核心类的作用
 - [ ] 修改了参数并重新运行了示例
 
-**恭喜！** 您现在已经掌握了 DeePMD-Minimal 的基础。🎉
+**恭喜！** 您现在已经掌握了 ShallowPMD 的基础。🎉
 
 ---
 
