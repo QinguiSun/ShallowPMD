@@ -515,13 +515,13 @@ class ShallowPMDModel(nn.Module):
     
     系统整体架构：
     ┌─────────────────┐
-    │  原子坐标、类型   │  coords [nf, nall, 3], atype [nall]
-    │  邻接列表        │  nlist [nf*nloc, nnei]
+    │  原子坐标、类型  │  coords [nf, nall, 3], atype [nall]
+    │  邻接列表       │  nlist [nf*nloc, nnei]
     └────────┬────────┘
              │
              ↓
     ┌─────────────────────────┐
-    │    描述符计算器           │  描述 = 局部环境的特征向量
+    │    描述符计算器          │  描述 = 局部环境的特征向量
     │  Descriptor(coords...)  │  保证平移不变性
     └────────┬────────────────┘
              │  descriptor [nf*nloc, dim_descriptor]
@@ -638,6 +638,7 @@ class ShallowPMDModel(nn.Module):
                    nf = 帧数
                    nall = 总原子数
                    3 = (x, y, z)
+                   如果需要计算力，应设置 requires_grad=True
                    
             atype: 原子类型 [nall] ∈ {0, 1, ..., ntypes-1}
             
@@ -650,11 +651,8 @@ class ShallowPMDModel(nn.Module):
                 'energy': 系统总能量 [nf]
                 'atom_energy': 每个原子的能量 [nf*nloc, 1]
                 'descriptor': 描述符 [nf*nloc, descriptor_dim]
+                'forces': 原子受力 [nf, nall, 3] 或 None（如果 coords.requires_grad=False）
         """
-        # 确保坐标需要梯度（用于力计算）
-        if not coords.requires_grad:
-            coords = coords.requires_grad_(True)
-        
         # 第一步：计算描述符 [nf*nloc, descriptor_dim]
         descriptor = self.descriptor(coords, atype, nlist)
         
@@ -684,10 +682,28 @@ class ShallowPMDModel(nn.Module):
         # 物理意义：系统势能 = 所有原子能量之和
         system_energy = atom_energy_reshaped.sum(dim=1).squeeze(-1)
         
+        # 第五步：计算力（如果启用梯度跟踪）
+        # F_i = -∂E/∂r_i（力是能量对坐标的负梯度）
+        forces = None
+        if coords.requires_grad and torch.is_grad_enabled():
+            try:
+                total_energy = system_energy.sum()
+                forces = -torch.autograd.grad(
+                    total_energy,
+                    coords,
+                    create_graph=True,
+                    retain_graph=True,
+                    allow_unused=True
+                )[0]
+            except RuntimeError:
+                # 如果梯度计算失败（例如在 no_grad 上下文中），返回 None
+                forces = None
+        
         return {
             'energy': system_energy,
             'atom_energy': atom_energy,
-            'descriptor': descriptor
+            'descriptor': descriptor,
+            'forces': forces
         }
     
     def compute_forces(self,
@@ -916,7 +932,7 @@ def create_dummy_batch():
 def test_model():
     """测试模型前向传播"""
     print("\n" + "="*60)
-    print("TEST: ShallowPMD 模型测试")
+    print("TEST: DeePMD-Minimal 模型测试")
     print("="*60)
     
     # 创建模型
@@ -963,4 +979,3 @@ def test_model():
 
 if __name__ == "__main__":
     test_model()
-
