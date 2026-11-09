@@ -48,7 +48,7 @@ Forces shape: torch.Size([...])
 
 ```bash
 # 查看基础用法
-python -c "
+python3 -c "
 import torch
 from shallow_pmd import ShallowPMDModel
 
