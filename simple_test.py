@@ -8,7 +8,7 @@ import sys
 
 def main():
     print("\n" + "="*70)
-    print("  DeePMD-Minimal 简单验证测试")
+    print("  ShallowPMD 简单验证测试")
     print("="*70 + "\n")
     
     # 检查 1: 导入
@@ -16,7 +16,7 @@ def main():
     try:
         import torch
         import numpy as np
-        from deepmd_minimal import (
+        from shallowpmd import (
             SmoothingFunction,
             EnvironmentMatrix,
             SimpleEmbeddingNet,
@@ -46,14 +46,14 @@ def main():
         print("  ✓ SimpleEmbeddingNet 创建成功")
         
         # 完整模型
-        model = DeePMDMinimalModel(
+        model = ShallowPMDModel(
             rcut=6.0,
             sel=[32],
             ntypes=1,
             descriptor_dims=[16],
             fitting_dims=[16]
         )
-        print("  ✓ DeePMDMinimalModel 创建成功")
+        print("  ✓ ShallowPMDModel 创建成功")
         
     except Exception as e:
         print(f"✗ 组件创建失败: {e}")
