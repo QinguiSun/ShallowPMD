@@ -1,7 +1,7 @@
 # ShallowPMD 快速参考卡片
 
-## 🎯 ** ShallowPMD ⭐  
-** Shallow（浅）vs Deep（深），体现代码结构从深层继承变成扁平、学习曲线变平缓
+## 🎯 ShallowPMD
+Shallow（浅）vs Deep（深），代码结构从深层继承变成扁平、学习曲线变平缓
 
 ---
 
