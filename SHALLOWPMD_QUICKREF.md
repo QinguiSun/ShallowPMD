@@ -1,10 +1,7 @@
 # ShallowPMD 快速参考卡片
 
-## 🎯 项目名称变更
-
-**旧名：** DeePMD-Minimal  
-**新名：** ShallowPMD ⭐  
-**理由：** Shallow（浅）vs Deep（深），体现代码结构从深层继承变成扁平、学习曲线变平缓
+## 🎯 ** ShallowPMD ⭐  
+** Shallow（浅）vs Deep（深），体现代码结构从深层继承变成扁平、学习曲线变平缓
 
 ---
 
@@ -149,34 +146,6 @@ optimizer.step()
 
 ---
 
-## 🔄 从旧名称升级
-
-### 需要改的地方
-
-```python
-# ❌ 旧代码
-from deepmd_minimal import DeePMDMinimalModel
-model = DeePMDMinimalModel(...)
-
-# ✅ 新代码
-from shallow_pmd import ShallowPMDModel
-model = ShallowPMDModel(...)
-```
-
-### 文件引用
-
-```bash
-# ❌ 旧
-README_MINIMAL.md
-DEEPMD_MINIMAL_GUIDE.md
-
-# ✅ 新
-README_SHALLOWPMD.md
-SHALLOWPMD_GUIDE.md
-```
-
----
-
 ## 📊 项目统计
 
 | 指标 | 数值 |
@@ -235,7 +204,7 @@ SHALLOWPMD_GUIDE.md
 ---
 
 **版本：** ShallowPMD v1.0  
-**发布：** 2024 年 11 月  
+**发布：** 2026 年 11 月  
 **状态：** ✅ 完全就绪
 
 *浅显易懂的分子动力学势函数实现*
