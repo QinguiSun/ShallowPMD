@@ -345,12 +345,12 @@ F_i = -∂E_total/∂R_i
 ## 📖 文档
 
 ### 核心文档
-- **本文件** (README_MINIMAL.md): 项目总览
-- **DEEPMD_MINIMAL_GUIDE.md**: 详细使用指南
+- **本文件** (README_SHALLOWPMD.md): 项目总览
+- **SHALLOWPMD_GUIDE.md**: 详细使用指南
 - **代码注释**: 每个类和方法都有详细说明
 
 ### 物理参考
-- 见 DEEPMD_MINIMAL_GUIDE.md 的"参考文献"部分
+- 见 SHALLOWPMD_GUIDE.md 的"参考文献"部分
 
 ---
 
