@@ -515,13 +515,13 @@ class ShallowPMDModel(nn.Module):
     
     系统整体架构：
     ┌─────────────────┐
-    │  原子坐标、类型  │  coords [nf, nall, 3], atype [nall]
-    │  邻接列表       │  nlist [nf*nloc, nnei]
+    │  原子坐标、类型   │  coords [nf, nall, 3], atype [nall]
+    │  邻接列表        │  nlist [nf*nloc, nnei]
     └────────┬────────┘
              │
              ↓
     ┌─────────────────────────┐
-    │    描述符计算器          │  描述 = 局部环境的特征向量
+    │    描述符计算器           │  描述 = 局部环境的特征向量
     │  Descriptor(coords...)  │  保证平移不变性
     └────────┬────────────────┘
              │  descriptor [nf*nloc, dim_descriptor]
