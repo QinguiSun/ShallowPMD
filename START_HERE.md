@@ -75,10 +75,10 @@ print(f'  力形状: {output[\"forces\"].shape}')
 
 ### 📖 我想学习
 
-**→ 推荐文档：** `README_MINIMAL.md`（10 分钟）
+**→ 推荐文档：** `README_SHALLOWPMD.md`（10 分钟）
 
 ```bash
-cat README_MINIMAL.md
+cat README_SHALLOWPMD.md
 ```
 
 然后读 `SHALLOWPMD_GUIDE.md`（45 分钟）
